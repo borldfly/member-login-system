@@ -1,0 +1,9 @@
+{
+  "rspCode": 200,
+  "token": "abcdefj",
+  "user": {
+      "id": "007",
+      "name": "陶玲玲",
+      "salary": 12000
+  }
+}
