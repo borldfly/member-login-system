@@ -29,6 +29,6 @@ module.exports = {
         devtool: 'source-map'
     },
     chainWebpack: config => {
-        // config.resolve.alias.set('@',resolve('src'))
+        config.resolve.alias.set('@',resolve('src'))
     }
 };

@@ -25,7 +25,7 @@
         </el-form>
         <el-table
             :data="list"
-            height="500"
+            height="calc(100vh - 220px)"
             border
             stripe
             :header-cell-style="{'text-align':'center'}"

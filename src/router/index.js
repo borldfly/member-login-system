@@ -19,6 +19,7 @@ const routes = [
     {
         path: '/',
         component: Main,
+        redirect: '/home',
         children: [
             {
                 path: '/home',
@@ -49,10 +50,6 @@ const routes = [
                 name: 'Staff',
                 component: Staff,
                 meta: {title: '员工管理'}
-            },
-            {
-                path: '/',
-                redirect: '/home'
             }
         ]
     }

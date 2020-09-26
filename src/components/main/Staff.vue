@@ -20,7 +20,7 @@
         </el-form>
         <el-table
             :data="staffList"
-            height="500px"
+            height="calc(100vh - 220px)"
             border
             stripe
             :header-cell-style="{'text-align': 'center'}"
