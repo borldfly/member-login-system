@@ -18,7 +18,7 @@
         </el-form>
         <el-table
             :data="supplierList"
-            :height="!isDialog ? 500 : 300"
+            height="calc(100vh - 220px)"
             border
             stripe
             @row-click="handleRowClick"

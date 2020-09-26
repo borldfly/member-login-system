@@ -19,9 +19,6 @@
 </template>
 
 <script>
-import {setToken, getToken, setUser, getUser} from '@/api/auth'
-import {login} from '@/api/httpService'
-
 export default {
   name: 'Login',
   data() {
