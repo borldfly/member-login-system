@@ -1,26 +1,29 @@
 <template>
-  <div class="management">
+  <div class="management" ref="management">
     <!--
       表格数据 :data
       样式设置:
         表头样式 header-cell-style
         表体样式 cell-style
     -->
-    <el-form :inline="true" ref="searchForm" :model="search" class="demo-form-inline filter">
+    <el-form ref="searchForm" :model="search" class="demo-form-inline filter" :inline="true">
       <!--
         设置重置步骤:
           1.新增ref属性，便于找到对应元素
           2.在表单项 el-form-item中添加对应的prop属性，指定对应的值
       -->
       <el-form-item prop="cardNum">
-        <el-input v-model="search.cardNum" placeholder="请输入会员卡号" style="width: 150px;"></el-input>
+        <el-input v-model="search.cardNum" placeholder="请输入会员卡号"></el-input>
       </el-form-item>
       <el-form-item prop="name">
-        <el-input v-model="search.name" placeholder="请输入会员姓名" style="width: 150px;"></el-input>
+        <el-input v-model="search.name" placeholder="请输入会员姓名"></el-input>
+      </el-form-item>
+      <el-form-item prop="cardNum">
+        <el-input v-model="search.cardNum" placeholder="请输入会员卡号"></el-input>
       </el-form-item>
       <el-form-item prop="payType">
         <el-select v-model="search.payType" placeholder="请选择支付类型" style="width: 200px;">
-          <el-option v-for="item in payTypeOptions" :label="item.name" :value="item.type"></el-option>
+          <el-option v-for="(item,index) in payTypeOptions" :key="index" :label="item.name" :value="item.type"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item prop="birthday">
@@ -38,7 +41,7 @@
     </el-form>
     <el-table
         :data="dataList"
-        height="500"
+        height="calc(100vh - 220px)"
         border
         stripe
         :header-cell-style="{'text-align': 'center'}"
@@ -118,7 +121,7 @@
         </el-form-item>
         <el-form-item label="支付类型" required prop="payType">
           <el-select v-model="form.payType" placeholder="请选择支付类型">
-            <el-option v-for="item in payTypeOptions" :label="item.name" :value="item.type"></el-option>
+            <el-option v-for="item in payTypeOptions" :label="item.name" :key="item.name" :value="item.type"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="会员地址" prop="address">
@@ -176,6 +179,9 @@
       created() {
           // 初始化查询数据
           this.init();
+      },
+      mounted() {
+          console.log(document.getElementsByClassName('content')[0].offsetHeight);
       },
       methods: {
           init() {
@@ -238,8 +244,8 @@
                           message: '删除失败，失败原因：' + error
                       })
                   })
-              }).catch(action=>{  // 取消逻辑
-              })
+              }).catch(()=>{  // 取消逻辑
+              });
           },
           handleAdd(name) {
               this.isAdd = true;
@@ -253,17 +259,17 @@
               // console.log(`每页 ${val} 条`);
               this.pageSize = val;
               this.currentPage = 1;
-              this.queryMemberList(this.currentPage, this.pageSize)
+              this.queryMemberList()
           },
           handleCurrentChange(val) {
               // console.log(`当前页: ${val}`);
               this.currentPage = val;
-              this.queryMemberList(this.currentPage, this.pageSize);
+              this.queryMemberList();
           },
           // 分页查询会员列表
-          queryMemberList(val,pageSize) {
+          queryMemberList() {
               // 默认查第一页数据
-              getMemberList(val || 1, pageSize || 10).then(res => {
+              getMemberList(this.currentPage, this.pageSize).then(res => {
                   const resData = res.data;
                   if (resData.code === 200){
                       this.dataList = resData.data.row;
