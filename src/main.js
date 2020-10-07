@@ -10,6 +10,8 @@ import store from './store'
 import '@/permission'
 import '@/axiosInterceptor'
 
+// 这是主文件
+
 // import mock from '@/db/mock.js'
 
 Vue.config.productionTip = false
