@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 # 会员管理系统
 
 # member-login-system
-=======
-# member-login-system1
->>>>>>> 50f2329... modify test
 
 ## Project setup
 ```
