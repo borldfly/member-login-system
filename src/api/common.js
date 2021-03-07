@@ -1,4 +1,3 @@
-import store from "@/store"
 /**
  * 本地缓存公共方法
  */

@@ -10,9 +10,8 @@
 </template>
 
 <script>
-  export default {
-      name: 'Content'
-  }
+export default {
+}
 </script>
 
 <style lang="scss" scoped>

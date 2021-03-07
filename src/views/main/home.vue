@@ -5,12 +5,12 @@
 </template>
 
 <script>
-  export default {
-      name: 'Home',
-      created() {
-          console.log(this.$route);
-      }
-  }
+export default {
+    name: 'Home',
+    created() {
+        console.log(this.$route);
+    }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -16,11 +16,12 @@ let loading = {
 };
 
 // 添加请求拦截器(请求头拦截,比如token，超时时间的设置)
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(config => {
     // 在发送请求之前做些什么
+    console.log(config);
     loading.open();
     return config;
-}, function (error) {
+}, error => {
     // 对请求错误做些什么
     loading.close();
     Message({
@@ -31,7 +32,7 @@ axios.interceptors.request.use(function (config) {
 });
 
 // 添加响应拦截器(数据处理)
-axios.interceptors.response.use(function (response) {
+axios.interceptors.response.use(response => {
     // 对响应数据做点什么
     loading.close();
     const resData = response.data;
@@ -42,7 +43,7 @@ axios.interceptors.response.use(function (response) {
         })
     }
     return response;
-}, function (error) {
+}, error => {
     // 对响应错误做点什么
     loading.close();
     Message({

@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/components/Login'
-import Main from '@/components/Main'
-import Management from '@/components/main/Management'
-import Home from '@/components/main/Home'
-import Supplier from '@/components/main/Supplier'
-import Goods from '@/components/main/Goods'
-import Staff from '@/components/main/Staff'
+import Main from '@/views/main'
 
 Vue.use(VueRouter)
 
@@ -14,7 +8,8 @@ const routes = [
     {
         path: '/login',
         name: 'Login',
-        component: Login
+        //采用懒加载形式
+        component: resolve => require(["../views/login"],resolve)
     },
     {
         path: '/',
@@ -23,32 +18,32 @@ const routes = [
         children: [
             {
                 path: '/home',
-                name: 'Home',
-                component: Home,
+                name: 'home',
+                component: resolve => require(["../views/main/home.vue"],resolve),
                 meta: {title: '首页'}
             },
             {
                 path: '/management',
-                name: 'Management',
-                component: Management,
+                name: 'management',
+                component: resolve => require(["../views/main/management.vue"],resolve),
                 meta: {title: '会员管理'}
             },
             {
                 path: '/supplier',
-                name: 'Supplier',
-                component: Supplier,
+                name: 'supplier',
+                component: resolve => require(["../views/main/supplier.vue"],resolve),
                 meta: {title: '供应商管理'}
             },
             {
                 path: '/goods',
-                name: 'Goods',
-                component: Goods,
+                name: 'goods',
+                component: resolve => require(["../views/main/goods.vue"],resolve),
                 meta: {title: '商品管理'}
             },
             {
                 path: '/staff',
-                name: 'Staff',
-                component: Staff,
+                name: 'staff',
+                component: resolve => require(["../views/main/staff.vue"],resolve),
                 meta: {title: '员工管理'}
             }
         ]

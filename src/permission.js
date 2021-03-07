@@ -1,5 +1,4 @@
 import router from '@/router'
-import {getTk, login} from '@/api/httpService'
 import {Message} from 'element-ui'
 import {setUser} from "./api/auth"
 import store from './store'
@@ -26,7 +25,7 @@ router.beforeEach((to, from, next)=>{
             store.dispatch('Login', token).then(()=>{
                 next({params: {name: 'test'}});
             }).catch(error => {
-                Message('错误信息：' + err);
+                Message('错误信息：' + error);
                 next({path: '/login',params: {name: 'test'}});
             })
         } else {
