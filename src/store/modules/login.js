@@ -1,4 +1,4 @@
-import {getTk, login, logout} from '@/api/httpService'
+import {getTk, login, logout} from '@/api/httpService';
 import {setToken, getToken, setUser, getUser, removeAll} from "../../api/auth";
 
 const myLogin = {
@@ -41,6 +41,7 @@ const myLogin = {
         Login({commit}, tk) {
             return new Promise((resolve, reject)=>{
                 login(tk).then(res=>{
+                    debugger;
                     const resData = res.data;
                     if (resData.code === 200){
                         commit('SET_USER', resData.user);

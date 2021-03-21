@@ -27,11 +27,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="birthday">
-        <!--<el-col :span="18">
-          <el-form-item prop="date1">-->
-            <el-date-picker type="date" placeholder="选择日期" v-model="search.birthday" style="width: 200px"></el-date-picker>
-          <!--</el-form-item>-->
-        <!--</el-col>-->
+          <el-date-picker type="date" placeholder="选择日期" v-model="search.birthday" style="width: 200px"></el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitQuery()" icon="el-icon-search">查询</el-button>
@@ -41,7 +37,7 @@
     </el-form>
     <el-table
         :data="dataList"
-        height="calc(100vh - 220px)"
+        height="calc(100vh - 280px)"
         border
         stripe
         :header-cell-style="{'text-align': 'center'}"
@@ -56,7 +52,11 @@
       <el-table-column prop="birthday" label="会员生日"></el-table-column>
       <el-table-column prop="phone" label="会员手机号"></el-table-column>
       <el-table-column prop="integral" label="会员积分"></el-table-column>
-      <el-table-column prop="money" label="可用余额"></el-table-column>
+      <el-table-column prop="money" label="可用余额">
+        <template slot-scope="scope">
+                <span>{{ scope.row.money.toFixed(2) }}</span>
+            </template>
+      </el-table-column>
       <el-table-column prop="payType" label="支付类型">
         <template slot-scope="scope">
           <span>{{ scope.row.payType | payTypeTransfer }}</span>
@@ -68,8 +68,8 @@
           label="操作"
           width="250">
         <template slot-scope="scope">
-          <el-button @click="updateMem(scope.row)" type="default" size="small">编辑</el-button>
-          <el-button type="danger" size="small" @click="deleteMem(scope.row)">删除</el-button>
+          <el-button @click="updateMem(scope.row)" type="default" size="mini">编辑</el-button>
+          <el-button type="danger" size="mini" @click="deleteMem(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -85,7 +85,7 @@
         class="block">
     </el-pagination>
 
-    <el-dialog title="会员编辑" :visible.sync="dialogFormVisible" width="500px" fullscreen>
+    <el-dialog title="会员编辑" :visible.sync="dialogFormVisible" top="30px" width="500px">
       <el-form
           ref="editForm"
           :model="form"
@@ -95,8 +95,7 @@
       >
         <el-form-item label="会员卡号" :label-width="formLabelWidth" prop="cardNum"
             :rules="[
-              {required: true,message: '卡号不能为空'},
-              {type: 'number',message: '卡号必须为数字'}
+              {required: true,message: '卡号不能为空'}
             ]">
           <el-input v-model.number="form.cardNum" autocomplete="off" placeholder="请输入会员卡号"></el-input>
         </el-form-item>

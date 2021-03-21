@@ -1,4 +1,3 @@
-import store from "@/store"
 /**
  * 本地缓存公共方法
  */
@@ -43,5 +42,5 @@ export function logout(cb) {
  * mock服务器请求地址
  */
 export const url = {
-    dev: 'http://localhost:7300/mock/5ed614a45da99657a4540e20'
+    dev: 'http://localhost:7300/mock/604d9b112a683d2820868700'
 }

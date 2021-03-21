@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {Loading, Message} from 'element-ui'
+import {storage} from '@/api/common'
 
 // 配置全局加载层
 let loading = {
@@ -15,12 +16,23 @@ let loading = {
     }
 };
 
+/**
+ * axios请求请求头参数配置
+ */
+let instance = axios.create({
+    timeout: 3000,
+    header: {
+        'token': storage.get('token') || ''
+    }
+});
+
 // 添加请求拦截器(请求头拦截,比如token，超时时间的设置)
-axios.interceptors.request.use(function (config) {
+instance.interceptors.request.use(config => {
     // 在发送请求之前做些什么
+    if(storage.get('token'))config.headers['token']=storage.get('token');
     loading.open();
     return config;
-}, function (error) {
+}, error => {
     // 对请求错误做些什么
     loading.close();
     Message({
@@ -31,7 +43,7 @@ axios.interceptors.request.use(function (config) {
 });
 
 // 添加响应拦截器(数据处理)
-axios.interceptors.response.use(function (response) {
+instance.interceptors.response.use(response => {
     // 对响应数据做点什么
     loading.close();
     const resData = response.data;
@@ -42,7 +54,7 @@ axios.interceptors.response.use(function (response) {
         })
     }
     return response;
-}, function (error) {
+}, error => {
     // 对响应错误做点什么
     loading.close();
     Message({
