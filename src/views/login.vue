@@ -68,7 +68,7 @@ export default {
           /**
            * valid: 是否通过校验
            */
-          this.$refs[name].validate((valid) => {
+          this.$refs[name].validate(valid => {
               if (valid) { // 初步验证通过
                   // 提交数据验证
                   var nValue = Number(this.form.password);

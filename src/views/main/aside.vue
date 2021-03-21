@@ -34,21 +34,20 @@
 </template>
 
 <script>
-  export default {
-      name: 'Aside',
-      data() {
-          return {
-              index: this.$router.history.current.path || 'home',
-              isRouter: true
-          }
-      },
-      methods: {
-          handleOpen() {
-          },
-          handleClose() {
-          }
-      }
-  }
+export default {
+    data() {
+        return {
+            index: this.$router.history.current.path || 'home',
+            isRouter: true
+        }
+    },
+    methods: {
+        handleOpen() {
+        },
+        handleClose() {
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

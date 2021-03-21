@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import Header from '@/components/main/Header'
-  import Aside from '@/components/main/Aside'
-  import Content from '@/components/main/Content'
+  import Header from '@/views/main/header'
+  import Aside from '@/views/main/aside'
+  import Content from '@/views/main/content'
 
   export default {
       name: 'Main',
