@@ -25,9 +25,22 @@ module.exports = {
     },
     lintOnSave:false,
     // 开启调试
-    configureWebpack: {
-        devtool: 'source-map'
-    },
+    // configureWebpack: config => {
+    //     config.module.rules.push({
+    //         test: /\.worker.js$/,
+    //         use: [
+    //             {
+    //                 loader: 'worker-loader'
+    //             },
+    //             {
+    //                 loader: "babel-loader",
+    //                 options: {
+    //                     presets: ["@babel/preset-env"],
+    //                 }
+    //             }
+    //         ]
+    //     })
+    // },
     chainWebpack: config => {
         config.resolve.alias.set('@',resolve('src'))
     }
