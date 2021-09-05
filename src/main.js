@@ -9,6 +9,7 @@ import store from './store'
 // import '@/api/iterator'
 import '@/permission'
 import '@/axiosInterceptor'
+import ClipboardJS from 'clipboard';
 
 // 这是主文件
 
@@ -17,6 +18,8 @@ import '@/axiosInterceptor'
 Vue.config.productionTip = false
 
 Vue.prototype.http = axios
+
+Vue.prototype.clipboard = new ClipboardJS('.btn');
 
 Vue.use(ElementUI)
 
